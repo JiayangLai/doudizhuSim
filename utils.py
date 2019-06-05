@@ -411,15 +411,44 @@ def cn5(lista):
 
 
 def allWays(cards):
-    allWays = solos(cards)
+    allWaysL=[]
+    for s in solos(cards):
+        allWaysL = allWaysL + [[s,'solo']]
     for p in pairs(cards):
-        allWays = allWays + [p*2]
+        allWaysL = allWaysL + [[p*2,'pair']]
     for t in trios(cards):
-        allWays = allWays + [t*3]
+        allWaysL = allWaysL + [[t*3,'trio']]
     for f in bomb(cards):
-        allWays = allWays + [f*4]
-    allWays = allWays + rocket(cards)+ solosChains(solos(cards)) + pairsChains(pairs(cards)) + triosChains(trios(cards)) +    triosSolo(trios(cards),solos(cards)) + triosPair(trios(cards),pairs(cards))+triosSoloChains(triosChains(trios(cards)),solos(cards))+    triosPairChains(triosChains(trios(cards)),pairs(cards))+fourDualSolos(bomb(cards),solos(cards))+fourDualPairs(bomb(cards),pairs(cards))
-    return allWays
+        allWaysL = allWaysL + [[f*4,'bomb']]
+    for r in rocket(cards):
+        allWaysL = allWaysL + [[r,'rocket']]
+    for sc in solosChains(solos(cards)):
+        allWaysL = allWaysL + [[sc,'soloschain']]
+    for pc in pairsChains(pairs(cards)):
+        allWaysL = allWaysL + [[pc,'pairschain']]
+    for tc in triosChains(trios(cards)):
+        allWaysL = allWaysL + [[pc,'trioschain']]
+    for ts in triosSolo(trios(cards),solos(cards)):
+        allWaysL = allWaysL + [[ts,'triosolo']]
+    for tp in triosPair(trios(cards),pairs(cards)):
+        allWaysL = allWaysL + [[tp,'triopair']]
+    for tsc in triosSoloChains(triosChains(trios(cards)),solos(cards)):
+        allWaysL = allWaysL + [[tsc,'triosolochains']]
+    for tpc in triosPairChains(triosChains(trios(cards)),pairs(cards)):
+        allWaysL = allWaysL + [[tpc,'triopairchains']]
+    for fds in fourDualSolos(bomb(cards),solos(cards)):
+        allWaysL = allWaysL + [[fds,'fourdualsolos']]
+    for fdp in fourDualPairs(bomb(cards),pairs(cards)):
+        allWaysL = allWaysL + [[fdp,'fourdualpairs']]
+    
+       
+    
+        
+        
+        
+        
+        
+    return allWaysL
     
 
 
