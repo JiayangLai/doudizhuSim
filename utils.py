@@ -427,7 +427,7 @@ def allWays(cards):
     for pc in pairsChains(pairs(cards)):
         allWaysL = allWaysL + [[pc,'pairschain']]
     for tc in triosChains(trios(cards)):
-        allWaysL = allWaysL + [[pc,'trioschain']]
+        allWaysL = allWaysL + [[tc,'trioschain']]
     for ts in triosSolo(trios(cards),solos(cards)):
         allWaysL = allWaysL + [[ts,'triosolo']]
     for tp in triosPair(trios(cards),pairs(cards)):
@@ -440,6 +440,40 @@ def allWays(cards):
         allWaysL = allWaysL + [[fds,'fourdualsolos']]
     for fdp in fourDualPairs(bomb(cards),pairs(cards)):
         allWaysL = allWaysL + [[fdp,'fourdualpairs']]
+        
+    return allWaysL
+
+
+def allMains(cards):
+    allWaysL=[]
+    for s in solos(cards):
+        allWaysL = allWaysL + [[s,'solo']]
+    for p in pairs(cards):
+        allWaysL = allWaysL + [[p*2,'pair']]
+    for t in trios(cards):
+        allWaysL = allWaysL + [[t*3,'trio']]
+    for f in bomb(cards):
+        allWaysL = allWaysL + [[f*4,'bomb']]
+    for r in rocket(cards):
+        allWaysL = allWaysL + [[r,'rocket']]
+    for sc in solosChains(solos(cards)):
+        allWaysL = allWaysL + [[sc,'soloschain']]
+    for pc in pairsChains(pairs(cards)):
+        allWaysL = allWaysL + [[pc,'pairschain']]
+    for tc in triosChains(trios(cards)):
+        allWaysL = allWaysL + [[tc,'trioschain']]
+    for ts in trios(cards):
+        allWaysL = allWaysL + [[ts*3,'triosolo']]
+    for tp in trios(cards):
+        allWaysL = allWaysL + [[tp*3,'triopair']]
+    for tsc in triosChains(trios(cards)):
+        allWaysL = allWaysL + [[tsc,'triosolochains']]
+    for tpc in triosChains(trios(cards)):
+        allWaysL = allWaysL + [[tpc,'triopairchains']]
+    for fds in bomb(cards):
+        allWaysL = allWaysL + [[fds*4,'fourdualsolos']]
+    for fdp in bomb(cards):
+        allWaysL = allWaysL + [[fdp*4,'fourdualpairs']]
     
        
     
